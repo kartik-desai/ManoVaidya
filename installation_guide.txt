@@ -5,4 +5,5 @@
 5. pip install -U pipenv
 6. pipenv shell
 7. pipenv install --ignore-pipfile
-8. npm install
+8. cd frontend
+9. npm install
