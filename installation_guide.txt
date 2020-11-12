@@ -1,12 +1,8 @@
 1. Unistall previous python versions
 2. Download latest python[https://www.python.org/ftp/python/3.9.0/python-3.9.0-amd64.exe]
 3. open cmd and "py -m pip install --upgrade pip"
-4. mkdir ManoVaidya
-5. cd ManoVaidya
-6. pip install -U pipenv
-7. pipenv shell
-8. pipenv install django
-9. django-admin startproject backend
-10. npx create-react-app frontend
-11. pipenv install --ignore-pipfile
-12. npm install
+4. Clone this repo and open cmd with folder "../ManoVaidya" 
+5. pip install -U pipenv
+6. pipenv shell
+7. pipenv install --ignore-pipfile
+8. npm install
