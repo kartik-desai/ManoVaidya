@@ -2,14 +2,40 @@ import React from 'react';
 import Signup from '../../components/signup/signup';
 import Login from '../../components/login/login';
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
-import {Grid,SwipeableDrawer, List, ListItem} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu'
+import {Grid,SwipeableDrawer, List, ListItem, withTheme} from '@material-ui/core';
+import {Suspense} from 'react';
+import {useImage} from 'react-image';
+import homeimg from '../../imgs/homeimg.jpg';
+import logo from '../../imgs/logo.png';
+import ReactSession from 'react-client-session/dist/ReactSession';
+
+
+
+function HomeImageComponent() {
+  const {src} = useImage({
+    srcList: homeimg,
+  })
  
+  return(
+  <img src={src} alt='home' loader={<div>Loading..</div>}/>
+  ) 
+}
+
+function LogoComponent() {
+  const {src} = useImage({
+    srcList: logo,
+  })
+  return(
+      <img src={src} height='70px'/>
+  ) 
+}
+
 
     const styles = makeStyles((theme) => ({
         anchorSpacing: {
@@ -18,6 +44,12 @@ import MenuIcon from '@material-ui/icons/Menu'
         
         logoPadding: {
             padding: '0px 5px 0px 10px',
+        },
+        menuButton: {
+          marginRight: theme.spacing(2),
+        },
+        title: {
+          flexGrow: 1,
         }
     }));
 
@@ -25,26 +57,45 @@ class Landing extends React.Component {
     
     constructor(props){
         super(props);
-        this.state = {
+		ReactSession.setStoreType("localStorage");
+		this.state = {
             drawerActivate:false,
             drawer:false,
-            loggedin : false,
-            emailid: '',
+            loggedin : ReactSession.get("emailid") == null ? false : true,
+            emailid: ReactSession.get("emailid"),
             content : 0,
             handleLoginUpdate: this.handleLoginUpdate.bind(this),
         };
-        this.createDrawer = this.createDrawer.bind(this);
-        this.destroyDrawer = this.destroyDrawer.bind(this);
+        //this.createDrawer = this.createDrawer.bind(this);
+        //this.destroyDrawer = this.destroyDrawer.bind(this);
     }
     handleLoginUpdate(someArg){
-        this.setState({emailid: someArg});
-        this.setState({loggedin: true});
+        ReactSession.setStoreType("localStorage");
+        ReactSession.set("emailid", someArg);
+        this.setState({
+          emailid: someArg,
+          loggedin: true,
+          content: 0,
+        });
+        
     }
     handleLogin = (event) => {
         if(!this.state.loggedin)
-            this.setState({
-                content: 2,
-            });
+             this.setState({
+                 content: 2,
+             });
+            }
+    handleLoggedin = (event) =>{    
+      if(this.state.loggedin){
+        ReactSession.setStoreType("localStorage");
+        ReactSession.set("emailid", null);
+        this.setState({
+          emailid: null,
+          loggedin: false,
+          content: 0,
+        });
+      }
+
     }
     handleSignup = (event) => {
         if(!this.state.loggedin)
@@ -52,16 +103,24 @@ class Landing extends React.Component {
             content: 1,
         });
     }
+    handleLogo = (event) => {
+      if(!this.state.loggedin)
+          this.setState({
+              content: 0,
+          });
+  }
     mySwitch = (param) => {
         switch (param) {
            case 1:
               return (<Signup handleLoginUpdate = {this.state.handleLoginUpdate} />);
             case 2:
-                return(<Login />);
-            default: return (<div><h2>Hello</h2></div>);
+                return(<Login handleLoginUpdate = {this.state.handleLoginUpdate}/>);
+            default: return (<Suspense fallback={<div>Loading...</div>}>
+                <HomeImageComponent/>
+              </Suspense>);
         }
     }
-    componentWillMount(){
+    /*componentWillMount(){
         if(window.innerWidth <= 600){
           this.setState({drawerActivate:true});
         }
@@ -83,9 +142,11 @@ class Landing extends React.Component {
             <AppBar >
               <Toolbar>
                 <Grid container direction = "row" justify = "space-between" alignItems="center">
-                  <MenuIcon
+                  <Button
                     className = {this.props.classes.sideBarIcon}
-                    onClick={()=>{this.setState({drawer:true})}} />
+                    onClick={()=>{this.setState({drawer:true})}} >
+                      MV
+                      </Button>
     
                   <Typography color="inherit" variant = "headline">ManoVaidya</Typography>
                   <Typography color="inherit" variant = "headline"></Typography>
@@ -132,39 +193,34 @@ class Landing extends React.Component {
         )
       }
 
-
+      */
 
     render(){
         return(
             <div>
-                <AppBar position="static" color="black">
-                    <Toolbar>
-                        <Typography variant="title" color="inherit" className={styles.logoSpacing}>
-                            ManoVaidya
-                        </Typography>
-                        <Link className={styles.anchorSpacing}>
-                        Detection
-                        </Link>
+                <AppBar position="static" style={{ background: '#ffffff', color: 'black' }}>
+                  <Toolbar className={styles.appbar}>
+                    <Suspense fallback={<div>Loading/.</div>}>
+                      <LogoComponent/>
+                    </Suspense>
+                    <Typography variant="h6" className={styles.title} onClick= {this.handleLogo}>
+                      Mano vaidya
+                    </Typography>
+                    <Button color="inherit">Cognitive Health Test</Button>
+                    
+                    <Button color="inherit">Chatbot</Button>
+                    
+                    <Button color="inherit">Therapy Chatroom</Button>
+                    
+                    <Button color="inherit">Selfcare Activities</Button>
+                    {!this.state.loggedin ? <Button color="inherit" onClick= {this.handleLogin}>Login</Button>: <Button color="inherit" onClick= {this.handleLoggedin}>{this.state.emailid}</Button> }
                         
-                        <Link className={styles.anchorSpacing}>
-                        Chatbot
-                        </Link>
-                        
-                        <Link className={styles.anchorSpacing}>
-                        Activities
-                        </Link>
-
-                        <Link className={styles.anchorSpacing}>
-                        Chatroom
-                        </Link>
-
-                        {!this.state.loggedin ? <Link href="#" onClick= {this.handleLogin}>Login</Link>: <Link href="#" onClick= {this.handleLogin}>{this.state.emailid}</Link> }
-                        {!this.state.loggedin ? <Link href="#" onClick= {this.handleSignup}>Signup</Link>: <h2></h2> }
-                        
-                    </Toolbar>
-
+                    {!this.state.loggedin ? <Button color="inherit"  onClick= {this.handleSignup}>Signup</Button>: <h2></h2> }
+                    
+                  </Toolbar>
                 </AppBar>
-                { this.mySwitch(this.state.content) }
+
+              { this.mySwitch(this.state.content) }
             </div>
         );
     }
