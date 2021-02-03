@@ -12,7 +12,7 @@ from rest_framework.decorators import api_view
 def surveyView(request):
     return HttpResponse('Hello, World!')
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST','PUT'])
 def surveyrequest(request):
     print(request)
     return HttpResponse('Hello, World!')
