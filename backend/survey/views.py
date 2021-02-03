@@ -11,9 +11,9 @@ from rest_framework.decorators import api_view
 # Create your views here.
 def surveyView(request):
     return HttpResponse('Hello, World!')
-
+    
 @api_view(['GET', 'POST','PUT'])
 def surveyrequest(request):
-    print(request)
-    return HttpResponse('Hello, World!')
+    print(request.data)
+    return HttpResponse('Hello, Worldss!')
     
