@@ -2,13 +2,13 @@ import React from 'react';
 import Survey from 'material-survey/components/Survey';
 
 export default function MySurvey(props){
-  const handleComplete = (event) =>{
+  const handleComplete = (data) =>{
     const putMethod = {
       method: 'PUT', // Method itself
       headers: {
         'Content-type': 'application/json; charset=UTF-8', // Indicates the content
       },
-      body: JSON.stringify(answers) // We send data in JSON format
+      body: JSON.stringify(data) // We send data in JSON format
     };
     const url = "http://localhost:8000/survey/surveyanswer";
     // make the HTTP put request using fetch api
@@ -22,7 +22,7 @@ return(
     <Survey
     onFinish={answers => {
       {console.log(answers)}
-      {handleComplete}
+      {handleComplete(answers)}
     }}
       form={{
         questions: [
