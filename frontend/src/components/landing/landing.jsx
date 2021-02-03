@@ -14,6 +14,7 @@ import {useImage} from 'react-image';
 import homeimg from '../../imgs/homeimg.jpg';
 import logo from '../../imgs/logo.png';
 import ReactSession from 'react-client-session/dist/ReactSession';
+import MySurvey from '../survey/survey';
 
 
 
@@ -103,6 +104,11 @@ class Landing extends React.Component {
             content: 1,
         });
     }
+    handleSurvey = (event) => {
+      this.setState({
+          content: 3,
+      });
+  }
     handleLogo = (event) => {
       if(!this.state.loggedin)
           this.setState({
@@ -115,6 +121,8 @@ class Landing extends React.Component {
               return (<Signup handleLoginUpdate = {this.state.handleLoginUpdate} />);
             case 2:
                 return(<Login handleLoginUpdate = {this.state.handleLoginUpdate}/>);
+            case 3:
+                return(<MySurvey/>);    
             default: return (<Suspense fallback={<div>Loading...</div>}>
                 <HomeImageComponent/>
               </Suspense>);
@@ -206,7 +214,7 @@ class Landing extends React.Component {
                     <Typography variant="h6" className={styles.title} onClick= {this.handleLogo}>
                       Mano vaidya
                     </Typography>
-                    <Button color="inherit">Cognitive Health Test</Button>
+                    <Button color="inherit" onClick={this.handleSurvey}>Cognitive Health Test</Button>
                     
                     <Button color="inherit">Chatbot</Button>
                     

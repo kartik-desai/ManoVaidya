@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'signup.apps.SignupConfig',
+    'survey.apps.SurveyConfig',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join("D:/Final Year Project/ManoVaidya/",'frontend/build'),
+            os.path.join("C:/Users/lapasia/Documents/final_project/ManoVaidya/",'frontend/build'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,5 +131,5 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
-    os.path.join("D:/Final Year Project/ManoVaidya/",'frontend/build/static'),
+    os.path.join("C:/Users/lapasia/Documents/final_project/ManoVaidya/",'frontend/build/static'),
 ]
