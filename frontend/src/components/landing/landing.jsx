@@ -15,7 +15,9 @@ import homeimg from '../../imgs/homeimg.jpg';
 import logo from '../../imgs/logo.png';
 import ReactSession from 'react-client-session/dist/ReactSession';
 import MySurvey from '../survey/survey';
-
+import Selfcare from '../../components/selfcare/selfcare';
+import Yoga from '../selfcare/yoga';
+import Quotes from '../selfcare/quotes';
 
 
 function HomeImageComponent() {
@@ -66,6 +68,8 @@ class Landing extends React.Component {
             emailid: ReactSession.get("emailid"),
             content : 0,
             handleLoginUpdate: this.handleLoginUpdate.bind(this),
+            handleYogaClick: this.handleYogaClick.bind(this),
+            handleQuotesClick: this.handleQuotesClick.bind(this),
         };
         //this.createDrawer = this.createDrawer.bind(this);
         //this.destroyDrawer = this.destroyDrawer.bind(this);
@@ -80,6 +84,18 @@ class Landing extends React.Component {
         });
         
     }
+    handleYogaClick = (event) => {
+      this.setState({
+        content: 5,//for yoga
+      });
+      
+  }
+  handleQuotesClick = (event) => {
+    this.setState({
+      content: 6,//for quotes
+    });
+    
+}
     handleLogin = (event) => {
         if(!this.state.loggedin)
              this.setState({
@@ -109,6 +125,11 @@ class Landing extends React.Component {
           content: 3,
       });
   }
+    handleSelfcare = (event) => {
+      this.setState({
+          content: 4,
+      });
+    }
     handleLogo = (event) => {
       if(!this.state.loggedin)
           this.setState({
@@ -123,6 +144,12 @@ class Landing extends React.Component {
                 return(<Login handleLoginUpdate = {this.state.handleLoginUpdate}/>);
             case 3:
                 return(<MySurvey/>);    
+            case 4:
+                return(<Selfcare handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} />);    
+            case 5:
+                return(<Yoga/>);
+            case 6:
+                return(<Quotes/>);    
             default: return (<Suspense fallback={<div>Loading...</div>}>
                 <HomeImageComponent/>
               </Suspense>);
@@ -220,7 +247,8 @@ class Landing extends React.Component {
                     
                     <Button color="inherit">Therapy Chatroom</Button>
                     
-                    <Button color="inherit">Selfcare Activities</Button>
+                    <Button color="inherit" onClick={this.handleSelfcare}>Selfcare Activities</Button>
+
                     {!this.state.loggedin ? <Button color="inherit" onClick= {this.handleLogin}>Login</Button>: <Button color="inherit" onClick= {this.handleLoggedin}>{this.state.emailid}</Button> }
                         
                     {!this.state.loggedin ? <Button color="inherit"  onClick= {this.handleSignup}>Signup</Button>: <h2></h2> }
