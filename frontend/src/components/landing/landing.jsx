@@ -18,6 +18,8 @@ import MySurvey from '../survey/survey';
 import Selfcare from '../../components/selfcare/selfcare';
 import Yoga from '../selfcare/yoga';
 import Quotes from '../selfcare/quotes';
+import Stories from '../selfcare/stories';
+import Meditate from '../selfcare/meditate';
 
 
 function HomeImageComponent() {
@@ -70,6 +72,8 @@ class Landing extends React.Component {
             handleLoginUpdate: this.handleLoginUpdate.bind(this),
             handleYogaClick: this.handleYogaClick.bind(this),
             handleQuotesClick: this.handleQuotesClick.bind(this),
+            handleStoriesClick: this.handleStoriesClick.bind(this),
+            handleMeditateClick: this.handleMeditateClick.bind(this),
         };
         //this.createDrawer = this.createDrawer.bind(this);
         //this.destroyDrawer = this.destroyDrawer.bind(this);
@@ -96,6 +100,20 @@ class Landing extends React.Component {
     });
     
 }
+handleStoriesClick = (event) => {
+  this.setState({
+    content: 7,//for stories
+  });
+  
+}
+
+handleMeditateClick = (event) => {
+  this.setState({
+    content: 8,//for stories
+  });
+  
+}
+
     handleLogin = (event) => {
         if(!this.state.loggedin)
              this.setState({
@@ -145,11 +163,15 @@ class Landing extends React.Component {
             case 3:
                 return(<MySurvey/>);    
             case 4:
-                return(<Selfcare handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} />);    
+                return(<Selfcare handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);    
             case 5:
                 return(<Yoga/>);
             case 6:
-                return(<Quotes/>);    
+                return(<Quotes/>);
+            case 7: 
+                return(<Stories/>);   
+            case 8:
+                return(<Meditate/>);     
             default: return (<Suspense fallback={<div>Loading...</div>}>
                 <HomeImageComponent/>
               </Suspense>);

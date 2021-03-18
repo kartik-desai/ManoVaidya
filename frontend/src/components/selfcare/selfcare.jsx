@@ -98,9 +98,10 @@ export default function Selfcare(props) {
         Activities
       </Typography>
       <Button onClick={props.handleYoga}> Yoga</Button>
-      <Button onClick={props.handleQuotes}> Motivational Quotes </Button>
-
-      </Grid>
+      <Button onClick={props.handleQuotes}> Motivational Routine </Button>
+      <Button onClick={props.handleStories}>Inspirational Stories</Button>
+      <Button onClick={props.handleMeditate}>Meditation</Button>
+     </Grid>
     </Grid>  
         </main>
       </Container>

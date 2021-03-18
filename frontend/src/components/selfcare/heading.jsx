@@ -46,10 +46,10 @@ export default function Heading(props) {
       <Grid container>
         <Grid item md={5}>
           <div className={classes.headingContent}>
-            <Typography component="h2" variant="h3" color="inherit" gutterBottom>
+            <Typography component="h2" variant="h4" color="inherit" gutterBottom>
               {post.title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
+            <Typography variant="h6" color="inherit" paragraph>
               {post.description}
             </Typography>
           </div>

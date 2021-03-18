@@ -26,15 +26,12 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(3),
     },
     card: {
-        maxWidth: 300,
-        maxHeight: 700,
-        boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.3)",
-        backgroundColor: "#fafafa",
+        maxWidth: 400,
       },
-    childimg:{
-      width:"100%",
-      height:"100%",
-    },
+      gridconatiner: {
+        paddingLeft : 80,
+        paddingRight : 50, 
+      }
   }));
 const heading = {
     title: 'Yoga',
@@ -61,22 +58,15 @@ export default function Yoga(props){
             Following are a few yoga poses that you can do regularly to curb stress and anxiety:
             </Typography>
             <br></br>
-            <Grid
-  container
-  spacing={3}
-  direction="row"
-  justify="space-evenly"
-  alignItems="stretch"
->
+            <Grid container spacing={3} className={classes.gridconatiner}>
               <Grid item xs={12} sm={6}>
-              <Card >
+              <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                 component="img"
                 alt="Butterfly Pose"
                 image = {y1}
                 title="Butterfly Pose"
-                className={classes.childimg}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -93,7 +83,7 @@ export default function Yoga(props){
              </Grid>
 
              <Grid item xs={12} sm={6}>
-             <Card >
+             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                 component="img"
@@ -117,14 +107,13 @@ export default function Yoga(props){
              </Grid>
              
              <Grid item xs={12} sm={6}>
-             <Card  >
+             <Card className={classes.card} >
               <CardActionArea>
                 <CardMedia
                 component="img"
                 alt="Extended Triangle Pose"
                 image = {y2}
                 title="Extended Triangle Pose"
-                className={classes.childimg}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -140,7 +129,7 @@ export default function Yoga(props){
              </Grid>
             
              <Grid item xs={12} sm={6}>
-             <Card>
+             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                 component="img"
@@ -234,7 +223,6 @@ export default function Yoga(props){
             </Grid>
           </main>
         </Container>
-        
       </React.Fragment>
     );
   }
