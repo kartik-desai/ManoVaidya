@@ -220,7 +220,17 @@ export default function Yoga(props){
                 </CardActionArea>
              </Card>
              </Grid>
+             <Grid item xs={12} sm={6}>
+              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+                Activities
+              </Typography>
+              <Button onClick={props.handleYoga}> Yoga</Button>
+              <Button onClick={props.handleQuotes}> Motivational Routine </Button>
+              <Button onClick={props.handleStories}>Inspirational Stories</Button>
+              <Button onClick={props.handleMeditate}>Meditation</Button>
             </Grid>
+            </Grid>
+            
           </main>
         </Container>
       </React.Fragment>

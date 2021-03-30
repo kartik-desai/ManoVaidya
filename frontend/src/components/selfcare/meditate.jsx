@@ -7,7 +7,7 @@ import Heading from './heading';
 import medhead from '../../imgs/medhead.jpg';
 import m1 from '../../imgs/medhead1.jpg';
 import Paper from '@material-ui/core/Paper';
-import { Typography } from '@material-ui/core';
+import {Button, Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -37,7 +37,10 @@ const useStyles = makeStyles((theme) => ({
       gridconatiner: {
         paddingLeft : 80,
         paddingRight : 50, 
-      }
+      },
+      sidebarSection: {
+        marginTop: theme.spacing(0),
+      },
      
     
   }));
@@ -190,6 +193,20 @@ export default function Meditate(props){
                 </card>
                 </Grid>
             </Grid>
+            <br></br><br></br><br></br>
+        <center>
+        <Grid item xs={12} sm={12}>
+              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+                Activities
+              </Typography>
+              <Button onClick={props.handleYoga}> Yoga</Button>
+              <Button onClick={props.handleQuotes}> Motivational Routine </Button>
+              <Button onClick={props.handleStories}>Inspirational Stories</Button>
+              <Button onClick={props.handleMeditate}>Meditation</Button>
+            </Grid>
+        </center>
+        
+            <br></br><br></br>
             </main>
         </Container>
       </React.Fragment>

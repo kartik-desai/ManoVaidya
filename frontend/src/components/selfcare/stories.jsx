@@ -2,7 +2,7 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types';
-import {Typography } from '@material-ui/core';
+import {Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Heading from './heading';
 import inshead from '../../imgs/storhead.jpg';
+import Grid from '@material-ui/core/Grid';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -181,6 +182,19 @@ export default function Stories(props){
       </TabPanel>
     </div>
         <br></br><br></br>
+        <center>
+        <Grid item xs={12} sm={6}>
+              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+                Activities
+              </Typography>
+              <Button onClick={props.handleYoga}> Yoga</Button>
+              <Button onClick={props.handleQuotes}> Motivational Routine </Button>
+              <Button onClick={props.handleStories}>Inspirational Stories</Button>
+              <Button onClick={props.handleMeditate}>Meditation</Button>
+        </Grid>
+        </center>
+        <br></br><br></br>
+        
       </React.Fragment>
     );
   }

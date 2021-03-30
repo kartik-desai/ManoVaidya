@@ -20,6 +20,7 @@ import Yoga from '../selfcare/yoga';
 import Quotes from '../selfcare/quotes';
 import Stories from '../selfcare/stories';
 import Meditate from '../selfcare/meditate';
+import Chatbot from '../../components/chatbot/chatbot';
 
 
 function HomeImageComponent() {
@@ -77,6 +78,31 @@ class Landing extends React.Component {
         };
         //this.createDrawer = this.createDrawer.bind(this);
         //this.destroyDrawer = this.destroyDrawer.bind(this);
+    }
+    componentDidMount(){
+      const script = document.createElement("script");
+      script.src="https://code.jquery.com/jquery-3.2.1.min.js";
+      script.async = true;
+      document.body.appendChild(script);
+      const script2 = document.createElement("script");
+      script2.src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js";
+      script2.async = true;
+      document.body.appendChild(script2);
+      
+      var sheet = document.createElement('link');
+      sheet.rel = 'stylesheet';
+      sheet.href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+      sheet.type = 'text/css';
+      //  document.head.appendChild(sheet);
+
+      const script4 = document.createElement("script");
+      script4.src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js";
+      script4.async = true;
+      document.body.appendChild(script4);
+      const script5 = document.createElement("script");
+      script5.src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js";
+      script5.async = true;
+      document.body.appendChild(script5);
     }
     handleLoginUpdate(someArg){
         ReactSession.setStoreType("localStorage");
@@ -148,6 +174,11 @@ handleMeditateClick = (event) => {
           content: 4,
       });
     }
+    handleChatbot = (event) => {
+      this.setState({
+          content: 9,
+      });
+  }
     handleLogo = (event) => {
       if(!this.state.loggedin)
           this.setState({
@@ -165,13 +196,15 @@ handleMeditateClick = (event) => {
             case 4:
                 return(<Selfcare handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);    
             case 5:
-                return(<Yoga/>);
+                return(<Yoga handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick} />);
             case 6:
-                return(<Quotes/>);
+                return(<Quotes handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);
             case 7: 
-                return(<Stories/>);   
+                return(<Stories handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);   
             case 8:
-                return(<Meditate/>);     
+                return(<Meditate handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);   
+            case 9:
+                return(<Chatbot/>);      
             default: return (<Suspense fallback={<div>Loading...</div>}>
                 <HomeImageComponent/>
               </Suspense>);
@@ -265,7 +298,7 @@ handleMeditateClick = (event) => {
                     </Typography>
                     <Button color="inherit" onClick={this.handleSurvey}>Cognitive Health Test</Button>
                     
-                    <Button color="inherit">Chatbot</Button>
+                    <Button color="inherit" onClick={this.handleChatbot}>Chatbot</Button>
                     
                     <Button color="inherit">Therapy Chatroom</Button>
                     

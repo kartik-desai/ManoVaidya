@@ -73,8 +73,22 @@ export default function Quotes(props){
             />
           </GridListTile>
         ))}
-      </GridList>
-    </div>
+       </GridList>
+        </div>
+        <br></br><br></br><br></br>
+        <center>
+        <Grid item xs={12} sm={12}>
+              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+                Activities
+              </Typography>
+              <Button onClick={props.handleYoga}> Yoga</Button>
+              <Button onClick={props.handleQuotes}> Motivational Routine </Button>
+              <Button onClick={props.handleStories}>Inspirational Stories</Button>
+              <Button onClick={props.handleMeditate}>Meditation</Button>
+            </Grid>
+        </center>
+        
+            <br></br><br></br>
         </Container>
         
       </React.Fragment>

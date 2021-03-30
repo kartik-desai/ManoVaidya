@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.views.generic import TemplateView
+from backend.views import ChatterBotApiView 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', include('signup.urls')),
     path('survey/', include('survey.urls')),
+    path('chatbot/',include('chatbot.urls')),
+    path('api/chatterbot/', ChatterBotApiView.as_view(), name='chatterbot'),
     path('', TemplateView.as_view(template_name='index.html')),
 ]

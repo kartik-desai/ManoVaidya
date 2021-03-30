@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'signup.apps.SignupConfig',
     'survey.apps.SurveyConfig',
+    'chatterbot.ext.django_chatterbot',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,23 @@ TEMPLATES = [
     },
 ]
 
+CHATTERBOT = {
+    'name': 'Tech Support Bot',
+    'logic_adapters': [
+        'chatterbot.logic.MathematicalEvaluation',
+        'chatterbot.logic.TimeLogicAdapter',
+        'chatterbot.logic.BestMatch'
+    ],
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'training_data': [
+         'chatterbot.corpus.english'
+    ],
+    'database_uri': 'sqlite:///database.db',
+    'read_only': True,
+    'storage_adapter': 'chatterbot.storage.SQLStorageAdapter',
+    'django_app_name': 'django_chatterbot'
+}
+
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
@@ -87,6 +105,10 @@ DATABASES = {
         'NAME': 'manovaidya',
         'HOST': '127.0.0.1',
         'PORT': 27017,
+    },
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -133,3 +155,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join("C:/Users/lapasia/Documents/final_project/ManoVaidya/",'frontend/build/static'),
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
