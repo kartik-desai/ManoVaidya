@@ -11,6 +11,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import tileData from './tileData';
+import Pulse from 'react-reveal/Pulse';
 
 const useStyles = makeStyles((theme) => ({
    mainGrid: {
@@ -48,6 +49,7 @@ export default function Quotes(props){
         <Container maxwidth="xl">
           <main>
             <Heading post={heading} />
+            <Pulse>
             <Typography variant="h6" color="inherit" paragraph>
             Self-care is all about the everyday habits that help you take care of and nurture your health and well-being.
             <br></br>
@@ -58,6 +60,7 @@ export default function Quotes(props){
            <br></br>
            Actually adopting a self-care practice that can improve your life is another. Here’s how to do it.
             </Typography>
+            </Pulse>
             <br></br>
           </main>
           <div className={classes.root}>

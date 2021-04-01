@@ -6,6 +6,9 @@ import headimag from '../../imgs/men1.jpg';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Zoom from 'react-reveal/Zoom';
+import Rotate from 'react-reveal/Rotate';
+
 
 const heading = {
   title: 'Take a Cognitive Health Test ',
@@ -46,12 +49,18 @@ export default function MySurvey(props){
   
 return(
   <React.Fragment>
-  <Heading post={heading} />
+    <Zoom>
+    <Heading post={heading} />
+    </Zoom>
+  
   <center>
+  <Rotate top left>
   <Typography variant="h6" color="inherit" paragraph>
             Take a proactive approach to your mental health and well being with this test.
             <br></br>
     </Typography>
+  </Rotate>
+ 
 
   </center>
     <Survey
@@ -258,6 +267,21 @@ return(
         ]
       }}  
     />
+    <br></br>
+    <center>
+    <Typography variant="h5" color="primary">
+         Result
+    </Typography>
+    <Typography variant="h6" color="inherit" paragraph>
+         The Result of your cognitive health test is given below.The different colours show different levels of your depression<br></br>
+         Green colour: The level of depression here is almost negligible<br></br>
+         Yellow colour: The level of depression here is mild<br></br>
+         Orange colour: The level of  depression here is moderate<br></br>
+         Red colour: The level of depression here is  severe and needs immediate medical assistance
+    </Typography>
+  
+    </center>
+    
     <br></br><br></br>
     
     <div>
@@ -272,8 +296,7 @@ return(
     <ProgressBar animated variant="indicator" now={(indicator *20)}/>
   </ProgressBar>
     </div>
-   
-
+    <br></br><br></br>
     </React.Fragment>
   );
 

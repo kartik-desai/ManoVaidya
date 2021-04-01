@@ -18,6 +18,7 @@ import y4 from '../../imgs/yoga4.PNG';
 import y5 from '../../imgs/yoga5.PNG';
 import y6 from '../../imgs/yoga6.PNG';
 import y7 from '../../imgs/yoga7.PNG';
+import Zoom from 'react-reveal/Zoom';
 
 
 
@@ -58,6 +59,7 @@ export default function Yoga(props){
             Following are a few yoga poses that you can do regularly to curb stress and anxiety:
             </Typography>
             <br></br>
+            <Zoom>
             <Grid container spacing={3} className={classes.gridconatiner}>
               <Grid item xs={12} sm={6}>
               <Card className={classes.card}>
@@ -230,6 +232,7 @@ export default function Yoga(props){
               <Button onClick={props.handleMeditate}>Meditation</Button>
             </Grid>
             </Grid>
+            </Zoom>
             
           </main>
         </Container>

@@ -11,6 +11,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Heading from './heading';
 import inshead from '../../imgs/storhead.jpg';
 import Grid from '@material-ui/core/Grid';
+import Roll from 'react-reveal/Roll';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -78,6 +79,7 @@ export default function Stories(props){
         <CssBaseline />
         <Container maxwidth="xl">
           <main>
+            <Roll>
             <Heading post={heading} />
             <Typography variant="h6" color="inherit" paragraph>
             Often in life  we feel down and slumping in our life. At these times our soul needs inspiration just like the body needs food.
@@ -91,6 +93,7 @@ export default function Stories(props){
            <br></br>
            The stories teach us lessons, fills our heart with hope and make us feel better.
             </Typography>
+            </Roll>
             <br></br>
           </main>
         </Container>

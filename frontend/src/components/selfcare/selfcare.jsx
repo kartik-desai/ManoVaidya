@@ -7,11 +7,18 @@ import Heading from './heading';
 import FPost from './post';
 import { Button, Typography } from '@material-ui/core';
 //import Card from '@material-ui/core/Card';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Paper from '@material-ui/core/Paper';
 import headimag from '../../imgs/mental1.png';
 import affimag from '../../imgs/affirmations.jpg';
 import jourimag from '../../imgs/journal.jpg';
-
+import tileImage from './tileImage';
+import LightSpeed from 'react-reveal/LightSpeed';
+import Pulse from 'react-reveal/Pulse';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -23,6 +30,22 @@ const useStyles = makeStyles((theme) => ({
   },
   sidebarSection: {
     marginTop: theme.spacing(0),
+  },
+  root: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
 }));
 
@@ -37,7 +60,7 @@ const heading = {
 const post = [
   {
     title: 'Affirmation Of The Day',
-    date: 'Feb 28',
+    date: 'April 5',
     description:
       'I grow stronger every time I overcome my anxiety.',
     image: affimag,
@@ -45,7 +68,7 @@ const post = [
   },
   {
     title: 'Journalling Prompt Of The Day',
-    date: 'Feb 28',
+    date: 'April 5',
     description:
       'Write about the happiest time of your life.',
     image: jourimag,
@@ -60,17 +83,24 @@ export default function Selfcare(props) {
       <CssBaseline />
       <Container maxwidth="xl">
         <main>
+        <LightSpeed left>
           <Heading post={heading} />
+          </LightSpeed>
+          <Pulse>
           <Typography variant="h6" color="inherit" paragraph>
           It’s so important to make sure you take good care of your body, mind, and soul every day, not just when you get sick.
           Learning how to eat right, reduce stress, exercise regularly, and take a time-out when you need it are touchstones of self-care and can help you stay healthy, happy, and resilient.
           </Typography>
+          </Pulse>
+    
           <Grid container spacing={5}>
             {post.map((post) => (
               <FPost key={post.title} post={post} />
             ))}
           </Grid>
+          
           <br></br>
+          <Fade left cascade>
           <Typography variant="h6" color="inherit" paragraph>
           Self-care is the practice of asking yourself what you need – mentally, spiritually, or emotionally – and making sure you get it.
           It is not inherently indulgent or selfish; it is necessary. 
@@ -80,6 +110,7 @@ export default function Selfcare(props) {
           <br></br>
           Embark on this journey of self-care by exploring various options ManoVaidya provides.
            </Typography>
+           </Fade>
            <br></br>
            <Grid container spacing={6}>
        <Grid item xs={12} sm={5}>
@@ -102,8 +133,24 @@ export default function Selfcare(props) {
       <Button onClick={props.handleStories}>Inspirational Stories</Button>
       <Button onClick={props.handleMeditate}>Meditation</Button>
      </Grid>
-    </Grid>  
-        </main>
+    </Grid> 
+    <br></br><br></br>
+    <div className={classes.root}>
+    <Zoom>
+    <GridList cellHeight={300} className={classes.gridList} cols={3.5}>
+        {tileImage.map((tile) => (
+          <GridListTile key={tile.img}>
+            <img src={tile.img} />
+          </GridListTile>
+
+        ))}
+      </GridList>
+
+    </Zoom>
+      
+    </div> 
+    <br></br><br></br>
+       </main>
       </Container>
       
     </React.Fragment>

@@ -17,6 +17,7 @@ import mind from '../../imgs/mindmeditation.mp4';
 import anx from '../../imgs/anxmeditation.mp4';
 import dep from '../../imgs/depmeditation.mp4';
 import clear from '../../imgs/clearmeditation.mp4';
+import LightSpeed from 'react-reveal/LightSpeed';
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -62,6 +63,7 @@ export default function Meditate(props){
         <Container maxwidth="xl">
           <main>
             <Heading post={heading} />
+            <LightSpeed>
             <Typography variant="h6" color="inherit" paragraph className={classes.root}>
             Meditation has become one of the most popular ways to relieve stress among people of all walks of life. This age-old practice, which can take many forms and may or may not be combined with many spiritual practices, can be used in several important ways.
             Meditation affects the body in exactly the opposite ways that stress does—by triggering the body's relaxation response. It restores the body to a calm state, helping the body repair itself and preventing new damage from the physical effects of stress.
@@ -193,6 +195,8 @@ export default function Meditate(props){
                 </card>
                 </Grid>
             </Grid>
+          </LightSpeed>
+
             <br></br><br></br><br></br>
         <center>
         <Grid item xs={12} sm={12}>

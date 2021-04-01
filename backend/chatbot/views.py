@@ -31,7 +31,7 @@ bot=ChatBot('Test',
 )
 @api_view(['GET', 'PUT', 'DELETE', 'POST'])
 def chatmsg(request):
-    if request.method == 'GET':
+    if request.method == 'POST':
         message = JSONParser().parse(request)
         #print(message)
         print(message["message"])
