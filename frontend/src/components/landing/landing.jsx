@@ -14,7 +14,13 @@ import {useImage} from 'react-image';
 import homeimg from '../../imgs/homeimg.jpg';
 import logo from '../../imgs/logo.png';
 import ReactSession from 'react-client-session/dist/ReactSession';
-
+import MySurvey from '../survey/survey';
+import Selfcare from '../../components/selfcare/selfcare';
+import Yoga from '../selfcare/yoga';
+import Quotes from '../selfcare/quotes';
+import Stories from '../selfcare/stories';
+import Meditate from '../selfcare/meditate';
+import Chatbot from '../../components/chatbot/chatbot';
 
 
 function HomeImageComponent() {
@@ -65,9 +71,38 @@ class Landing extends React.Component {
             emailid: ReactSession.get("emailid"),
             content : 0,
             handleLoginUpdate: this.handleLoginUpdate.bind(this),
+            handleYogaClick: this.handleYogaClick.bind(this),
+            handleQuotesClick: this.handleQuotesClick.bind(this),
+            handleStoriesClick: this.handleStoriesClick.bind(this),
+            handleMeditateClick: this.handleMeditateClick.bind(this),
         };
         //this.createDrawer = this.createDrawer.bind(this);
         //this.destroyDrawer = this.destroyDrawer.bind(this);
+    }
+    componentDidMount(){
+      const script = document.createElement("script");
+      script.src="https://code.jquery.com/jquery-3.2.1.min.js";
+      script.async = true;
+      document.body.appendChild(script);
+      const script2 = document.createElement("script");
+      script2.src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js";
+      script2.async = true;
+      document.body.appendChild(script2);
+      
+      var sheet = document.createElement('link');
+      sheet.rel = 'stylesheet';
+      sheet.href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+      sheet.type = 'text/css';
+      //  document.head.appendChild(sheet);
+
+      const script4 = document.createElement("script");
+      script4.src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js";
+      script4.async = true;
+      document.body.appendChild(script4);
+      const script5 = document.createElement("script");
+      script5.src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js";
+      script5.async = true;
+      document.body.appendChild(script5);
     }
     handleLoginUpdate(someArg){
         ReactSession.setStoreType("localStorage");
@@ -79,6 +114,32 @@ class Landing extends React.Component {
         });
         
     }
+    handleYogaClick = (event) => {
+      this.setState({
+        content: 5,//for yoga
+      });
+      
+  }
+  handleQuotesClick = (event) => {
+    this.setState({
+      content: 6,//for quotes
+    });
+    
+}
+handleStoriesClick = (event) => {
+  this.setState({
+    content: 7,//for stories
+  });
+  
+}
+
+handleMeditateClick = (event) => {
+  this.setState({
+    content: 8,//for stories
+  });
+  
+}
+
     handleLogin = (event) => {
         if(!this.state.loggedin)
              this.setState({
@@ -103,6 +164,21 @@ class Landing extends React.Component {
             content: 1,
         });
     }
+    handleSurvey = (event) => {
+      this.setState({
+          content: 3,
+      });
+  }
+    handleSelfcare = (event) => {
+      this.setState({
+          content: 4,
+      });
+    }
+    handleChatbot = (event) => {
+      this.setState({
+          content: 9,
+      });
+  }
     handleLogo = (event) => {
       if(!this.state.loggedin)
           this.setState({
@@ -115,6 +191,20 @@ class Landing extends React.Component {
               return (<Signup handleLoginUpdate = {this.state.handleLoginUpdate} />);
             case 2:
                 return(<Login handleLoginUpdate = {this.state.handleLoginUpdate}/>);
+            case 3:
+                return(<MySurvey/>);    
+            case 4:
+                return(<Selfcare handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);    
+            case 5:
+                return(<Yoga handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick} />);
+            case 6:
+                return(<Quotes handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);
+            case 7: 
+                return(<Stories handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);   
+            case 8:
+                return(<Meditate handleYoga = {this.state.handleYogaClick} handleQuotes = {this.state.handleQuotesClick} handleStories={this.state.handleStoriesClick} handleMeditate={this.state.handleMeditateClick}/>);   
+            case 9:
+                return(<Chatbot/>);      
             default: return (<Suspense fallback={<div>Loading...</div>}>
                 <HomeImageComponent/>
               </Suspense>);
@@ -206,13 +296,14 @@ class Landing extends React.Component {
                     <Typography variant="h6" className={styles.title} onClick= {this.handleLogo}>
                       Mano vaidya
                     </Typography>
-                    <Button color="inherit">Cognitive Health Test</Button>
+                    <Button color="inherit" onClick={this.handleSurvey}>Cognitive Health Test</Button>
                     
-                    <Button color="inherit">Chatbot</Button>
+                    <Button color="inherit" onClick={this.handleChatbot}>Chatbot</Button>
                     
                     <Button color="inherit">Therapy Chatroom</Button>
                     
-                    <Button color="inherit">Selfcare Activities</Button>
+                    <Button color="inherit" onClick={this.handleSelfcare}>Selfcare Activities</Button>
+
                     {!this.state.loggedin ? <Button color="inherit" onClick= {this.handleLogin}>Login</Button>: <Button color="inherit" onClick= {this.handleLoggedin}>{this.state.emailid}</Button> }
                         
                     {!this.state.loggedin ? <Button color="inherit"  onClick= {this.handleSignup}>Signup</Button>: <h2></h2> }
