@@ -1,6 +1,8 @@
 from rest_framework import serializers 
 from signup.models import UserSignup
 from signup.models import TherapistSignup
+
+from signup.models import TherapySession
  
  
 class SignupSerializer(serializers.ModelSerializer):
@@ -25,3 +27,16 @@ class SignupTherapistSerializer(serializers.ModelSerializer):
                   'age',
                   'gender',
                   'prooffile')
+
+
+class SessionSerializer(serializers.ModelSerializer):
+ 
+    class Meta:
+        model = TherapySession
+        fields = ('useremail',
+                  'therapistemail',
+                  'date',
+                  'month',
+                  'year',
+                  'time',
+                  'roomid')

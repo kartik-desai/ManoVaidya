@@ -26,7 +26,7 @@ SECRET_KEY = '4e(1=&zh)!jzyy*wrjr8jbc!u_dmr13b!ar1_-r=#96ohypen5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','192.168.1.5']
 
 
 # Application definition
@@ -153,7 +153,7 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
-    os.path.join("C:/Users/lapasia/Documents/final_project/ManoVaidya/",'frontend/build/static'),
+    os.path.join("D:/Final Year Project/ManoVaidya/",'frontend/build/static'),
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
