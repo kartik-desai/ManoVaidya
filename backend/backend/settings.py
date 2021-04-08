@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'signup.apps.SignupConfig',
     'survey.apps.SurveyConfig',
-    'chatterbot.ext.django_chatterbot',
 ]
 
 MIDDLEWARE = [
@@ -75,23 +74,6 @@ TEMPLATES = [
         },
     },
 ]
-
-CHATTERBOT = {
-    'name': 'Manovaidya Bot',
-    'logic_adapters': [
-        'chatterbot.logic.MathematicalEvaluation',
-        'chatterbot.logic.TimeLogicAdapter',
-        'chatterbot.logic.BestMatch'
-    ],
-    'database_uri': 'sqlite:///databas.db',
-    'database': 'chatbot',
-    'read_only': True,
-    'storage_adapter': 'chatterbot.storage.SQLStorageAdapter',
-    'preprocessors': [
-        'chatterbot.preprocessors.clean_whitespace',
-    ],
-    'django_app_name': 'django_chatterbot'
-}
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
