@@ -8,7 +8,6 @@ import yogaheading from '../../imgs/yogahead.jpg';
 import { Button, Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import y1 from '../../imgs/yoga1.PNG';
@@ -19,6 +18,8 @@ import y5 from '../../imgs/yoga5.PNG';
 import y6 from '../../imgs/yoga6.PNG';
 import y7 from '../../imgs/yoga7.PNG';
 import Zoom from 'react-reveal/Zoom';
+import p1 from '../../imgs/pranayam1.mp4';
+import p2 from '../../imgs/pranayam2.mp4';
 
 
 
@@ -32,7 +33,10 @@ const useStyles = makeStyles((theme) => ({
       gridconatiner: {
         paddingLeft : 80,
         paddingRight : 50, 
-      }
+      },
+      vidcard: {
+        maxWidth: 400,
+      },
   }));
 const heading = {
     title: 'Yoga',
@@ -230,11 +234,50 @@ export default function Yoga(props){
               <Button onClick={props.handleQuotes}> Motivational Routine </Button>
               <Button onClick={props.handleStories}>Inspirational Stories</Button>
               <Button onClick={props.handleMeditate}>Meditation</Button>
+            </Grid> 
+            <Grid itemGrid container item xs={12} sm={6}>
+              <card className={classes.vidcard}>
+                <CardActionArea>
+                    <cardMedia>
+                    <div class="embed-responsive embed-responsive-16by9">
+                    <video controls="true" class="embed-responsive-item" height="300" width="400">
+                    <source src={p1} type="video/mp4" />
+                    </video>
+                    </div>
+                    </cardMedia>
+                    
+                    <CardContent>
+                    <Typography gutterBottom variant="h6" component="h2">
+                        Nadishodhan Pranayam 
+                    </Typography>
+                    </CardContent>
+                    </CardActionArea>
+                </card>
+              </Grid>
+              <Grid itemGrid container item xs={12} sm={6}>
+              <card className={classes.vidcard}>
+                <CardActionArea>
+                    <cardMedia>
+                    <div class="embed-responsive embed-responsive-16by9">
+                    <video controls="true" class="embed-responsive-item" height="300" width="400">
+                    <source src={p2} type="video/mp4" />
+                    </video>
+                    </div>
+                    </cardMedia>
+                    
+                    <CardContent>
+                    <Typography gutterBottom variant="h6" component="h2">
+                        Pranayam
+                    </Typography>
+                    </CardContent>
+                    </CardActionArea>
+                </card>
+              </Grid>
             </Grid>
-            </Grid>
-            </Zoom>
-            
-          </main>
+           </Zoom>
+
+                      
+         </main>
         </Container>
       </React.Fragment>
     );

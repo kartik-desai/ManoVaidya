@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'signup.apps.SignupConfig',
     'survey.apps.SurveyConfig',
-    'chatterbot.ext.django_chatterbot',
 ]
 
 MIDDLEWARE = [
@@ -75,23 +74,6 @@ TEMPLATES = [
         },
     },
 ]
-
-CHATTERBOT = {
-    'name': 'Tech Support Bot',
-    'logic_adapters': [
-        'chatterbot.logic.MathematicalEvaluation',
-        'chatterbot.logic.TimeLogicAdapter',
-        'chatterbot.logic.BestMatch'
-    ],
-    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
-    'training_data': [
-         'chatterbot.corpus.english'
-    ],
-    'database_uri': 'sqlite:///database.db',
-    'read_only': True,
-    'storage_adapter': 'chatterbot.storage.SQLStorageAdapter',
-    'django_app_name': 'django_chatterbot'
-}
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
