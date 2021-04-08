@@ -168,13 +168,13 @@ export default function SessionForm(props) {
 
     function showSessions() {
         let today = new Date();
-        console.log(today);
+        //console.log(today);
         let date = today.getDate();
-        console.log(date);
-        console.log(date + 1);
+        //console.log(date);
+        //console.log(date + 1);
         let month = today.getMonth() + 1;
         let year = today.getFullYear();
-        console.log(month);
+        //console.log(month);
         let datesDisplay = [];
 
         if (date == 31) {
@@ -208,7 +208,7 @@ export default function SessionForm(props) {
                 mn: month,
                 yr: year,
             };
-            console.log(sessionid.time);
+            //console.log(sessionid.time);
             datesDisplay.push(
                 <Grid container item xs={16} spacing={2}>
                     <React.Fragment>
@@ -293,6 +293,8 @@ export default function SessionForm(props) {
             "roomid": "1jd6umj3ytz",
         };
         setButton(1);
+        console.log(timings);
+        console.log(parseInt(event.currentTarget.dataset.time));
         await setSelectedSession(timings);
     }
 

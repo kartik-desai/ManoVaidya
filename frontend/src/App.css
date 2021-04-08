@@ -553,3 +553,10 @@ input[type="range"]::-webkit-slider-thumb {
   width: 10px;
   height: 26px;
 }
+.left_msg .msg_bubble {
+  border-bottom-left-radius: 0;
+}
+
+.right_msg {
+  flex-direction: row-reverse;
+}

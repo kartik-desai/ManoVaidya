@@ -14,9 +14,8 @@ import pickle
 import chatterbot
 from chatterbot.trainers import ListTrainer
 # Create your views here.
-bot=ChatBot('Test',  
+bot=ChatBot('ManoVaidya',  
 	database_uri='sqlite:///database.db',
-    read_only=True,
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
     preprocessors=[
         'chatterbot.preprocessors.clean_whitespace',
@@ -24,11 +23,27 @@ bot=ChatBot('Test',
     logic_adapters=[
         {
             'import_path': 'chatterbot.logic.BestMatch',
-            'default_response': 'I am sorry, but I do not understand.'
+            'default_response': 'I am sorry, but I do not understand.',
+            'statement_comparison_function': chatterbot.comparisons.levenshtein_distance,
+            'response_selection_method': chatterbot.response_selection.get_random_response,
+            'maximum_similarity_threshold': 0.90
         },
         'chatterbot.logic.MathematicalEvaluation'
     ],
 )
+
+trainer = ChatterBotCorpusTrainer(bot)
+
+trainer.train(
+    "chatterbot.corpus.english.botprofile",
+    "chatterbot.corpus.english.conversations",
+    "chatterbot.corpus.english.emotion",
+    "chatterbot.corpus.english.greetings",
+    "chatterbot.corpus.english.humor",
+    "chatterbot.corpus.english.psychology",
+    r"./chatbot/manovaidya.yml",
+)
+
 @api_view(['GET', 'PUT', 'DELETE', 'POST'])
 def chatmsg(request):
     if request.method == 'POST':

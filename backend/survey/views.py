@@ -17,8 +17,8 @@ def surveyView(request):
 @api_view(['GET', 'POST','PUT'])
 def surveyrequest(request):
     print(request.data)
-    filename = 'C:\\Users\\lapasia\\Documents\\final_project\\ManoVaidya\\backend\\survey\\finalized_model.sav'
-    loaded_model = pickle.load(open(filename, 'rb'))
+    #filename = './survey/finalized_model.sav'
+    loaded_model = pickle.load(open(r'./survey/finalized_model.sav', 'rb'))
     mytest = {'age':[int(request.data["age group"])], 'gender':[int(request.data["gender"])], 'occupation':[int(request.data["Occupational Status"])], 'interest_pleasure':[int(request.data["interest or pleasure"])], 'feel_tired':[int(request.data["feel tired"])], 'feel_bad':[int(request.data["feel bad"])],'feel_trouble':[int(request.data["feel trouble"])], 'feel_restless':[int(request.data["feel slowly"])], 'feel_sad':[int(request.data["feel sad"])], 'feel_angry':[int(request.data["feel angry"])], 'confusion':[int(request.data["confusion"])],'thoughts':[int(request.data["thoughts"])], 'poor_appetite':[int(request.data["poor appetite"])], 'sleep_cycle':[int(request.data["sleep cycle"])], 'previously_diagnosed':[int(request.data["diagnosed"])]}
     #print(mytest)
     #print(int(request.data["feel down"]))

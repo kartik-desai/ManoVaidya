@@ -566,10 +566,11 @@ export default function TherapistChatroom(props) {
     }, []);
     function randomName() {
         var min = 0;
-        var max = 4;
+        var max = 11;
         var rand = min + (Math.random() * (max - min));
 
-        var names = ['Jethalal', 'Iyerdi', 'Popatlal', 'Mehtus', 'Tapu'];
+        var names = ['Jethalal', 'Iyerdi', 'Popatlal', 'Mehtus', 'Tapu', 'Sonu', 'Pinku', 'Goli', 'Sodhi',
+            'Roshan', 'Gogi', 'Babita'];
         console.log(names[Math.round(rand)]);
         return names[Math.round(rand)];
 

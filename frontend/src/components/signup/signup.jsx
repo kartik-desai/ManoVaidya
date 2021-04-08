@@ -213,7 +213,7 @@ export default function Login(props) {
 					fetch(url, putMethod)
 						.then((response) => {
 							if (response.status === 201)
-								props.handleLoginUpdate(email);
+								props.handleTherapistLoginUpdate(email);
 							else if (response.status === 400) {
 								console.log(response.json);
 								setError(true);

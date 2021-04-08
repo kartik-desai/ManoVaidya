@@ -75,7 +75,7 @@ class Landing extends React.Component {
       loggedin: ReactSession.get("emailid") == null ? false : true,
       emailid: ReactSession.get("emailid"),
       content: 0,
-      usertype: ReactSession.get("usertype"),
+      usertype: ReactSession.get("usertype") == null ? 0 : ReactSession.get("usertype"),
       handleLoginUpdate: this.handleLoginUpdate.bind(this),
       handleTherapistLoginUpdate: this.handleTherapistLoginUpdate.bind(this),
       handleYogaClick: this.handleYogaClick.bind(this),
@@ -228,7 +228,7 @@ class Landing extends React.Component {
   mySwitch = (param) => {
     switch (param) {
       case 1:
-        return (<Signup handleLoginUpdate={this.state.handleLoginUpdate} />);
+        return (<Signup handleLoginUpdate={this.state.handleLoginUpdate} handleTherapistLoginUpdate={this.state.handleTherapistLoginUpdate} />);
       case 2:
         return (<Login handleLoginUpdate={this.state.handleLoginUpdate} handleTherapistLoginUpdate={this.state.handleTherapistLoginUpdate} />);
       case 3:

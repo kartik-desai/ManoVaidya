@@ -77,19 +77,19 @@ TEMPLATES = [
 ]
 
 CHATTERBOT = {
-    'name': 'Tech Support Bot',
+    'name': 'Manovaidya Bot',
     'logic_adapters': [
         'chatterbot.logic.MathematicalEvaluation',
         'chatterbot.logic.TimeLogicAdapter',
         'chatterbot.logic.BestMatch'
     ],
-    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
-    'training_data': [
-         'chatterbot.corpus.english'
-    ],
-    'database_uri': 'sqlite:///database.db',
+    'database_uri': 'sqlite:///databas.db',
+    'database': 'chatbot',
     'read_only': True,
     'storage_adapter': 'chatterbot.storage.SQLStorageAdapter',
+    'preprocessors': [
+        'chatterbot.preprocessors.clean_whitespace',
+    ],
     'django_app_name': 'django_chatterbot'
 }
 
