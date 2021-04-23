@@ -26,7 +26,7 @@ SECRET_KEY = '4e(1=&zh)!jzyy*wrjr8jbc!u_dmr13b!ar1_-r=#96ohypen5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','192.168.1.5']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','192.168.1.5','*']
 
 
 # Application definition
@@ -61,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join("C:/Users/lapasia/Documents/final_project/ManoVaidya/",'frontend/build'),
+            os.path.join("D:/Final Year Project/ManoVaidya/",'frontend/build'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -87,10 +87,6 @@ DATABASES = {
         'NAME': 'manovaidya',
         'HOST': '127.0.0.1',
         'PORT': 27017,
-    },
-    'sqlite': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

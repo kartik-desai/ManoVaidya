@@ -60,7 +60,7 @@ const heading = {
 const post = [
   {
     title: 'Affirmation Of The Day',
-    date: 'April 5',
+    date: 'April 19',
     description:
       'I grow stronger every time I overcome my anxiety.',
     image: affimag,
@@ -68,7 +68,7 @@ const post = [
   },
   {
     title: 'Journalling Prompt Of The Day',
-    date: 'April 5',
+    date: 'April 19',
     description:
       'Write about the happiest time of your life.',
     image: jourimag,

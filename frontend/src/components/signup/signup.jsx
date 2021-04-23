@@ -208,7 +208,7 @@ export default function Login(props) {
 						body: form_data
 					};
 					console.log(putMethod);
-					const url = "http://localhost:8000/signup/registertherapist";
+					const url = window.location.href + "signup/registertherapist";
 					// make the HTTP put request using fetch api
 					fetch(url, putMethod)
 						.then((response) => {
@@ -244,7 +244,7 @@ export default function Login(props) {
 						},
 						body: JSON.stringify(userdata) // We send data in JSON format
 					};
-					const url = "http://localhost:8000/signup/registeruser";
+					const url = window.location.href + "signup/registeruser";
 					// make the HTTP put request using fetch api
 					fetch(url, putMethod)
 						.then((response) => {

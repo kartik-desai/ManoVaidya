@@ -33,7 +33,7 @@ export default function MySurvey(props) {
       },
       body: JSON.stringify(data) // We send data in JSON format
     };
-    const url = "http://localhost:8000/survey/surveyanswer";
+    const url = window.location.href + "survey/surveyanswer";
     // make the HTTP put request using fetch api
     console.log(putMethod);
     fetch(url, putMethod)

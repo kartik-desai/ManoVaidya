@@ -47,7 +47,7 @@ class Chatbot extends Component {
 			},
 			body: JSON.stringify(userdata) // We send data in JSON format
 		};
-		const url = "http://localhost:8000/chatbot/chatmsg";
+		const url = window.location.href + "chatbot/chatmsg";
 		// make the HTTP put request using fetch api
 		fetch(url, putMethod)
 			.then((response) => {
