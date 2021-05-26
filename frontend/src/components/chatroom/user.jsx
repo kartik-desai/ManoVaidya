@@ -688,7 +688,7 @@ export default function UserChatroom(props) {
             },
             body: JSON.stringify(userdata) // We send data in JSON format
         };
-        const url = "http://localhost:8000/signup/getusersessions";
+        const url = window.location.href + "signup/getusersessions";
         // make the HTTP put request using fetch api
         await fetch(url, putMethod)
             .then((response) => {
