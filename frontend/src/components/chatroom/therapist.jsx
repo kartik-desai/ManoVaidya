@@ -641,7 +641,7 @@ export default function TherapistChatroom(props) {
             body: JSON.stringify(request)
         };
         console.log(postMethod);
-        const url = "http://localhost:8000/signup/gettherapistsessions";
+        const url = window.location.href + "signup/gettherapistsessions";
         // make the HTTP put request using fetch api
         await fetch(url, postMethod)
             .then(async (response) => {

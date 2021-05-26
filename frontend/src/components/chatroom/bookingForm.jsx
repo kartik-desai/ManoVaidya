@@ -91,7 +91,7 @@ export default function SessionForm(props) {
                 'Content-type': 'application/json; charset=UTF-8', // Indicates the content
             } // We send data in JSON format
         };
-        const url = "http://localhost:8000/signup/gettherapists";
+        const url = window.location.href + "signup/gettherapists";
         await fetch(url, getMethod)
             .then(async (response) => {
                 await response.json().then(async data => {
@@ -114,7 +114,7 @@ export default function SessionForm(props) {
             body: JSON.stringify(request)
         };
         console.log(postMethod);
-        const url = "http://localhost:8000/signup/gettherapistsessions";
+        const url = window.location.href + "signup/gettherapistsessions";
         // make the HTTP put request using fetch api
         await fetch(url, postMethod)
             .then(async (response) => {
@@ -155,7 +155,7 @@ export default function SessionForm(props) {
             body: JSON.stringify(requestData)
         };
         console.log(putMethod);
-        const url = "http://localhost:8000/signup/updatetherapist";
+        const url = window.location.href + "signup/updatetherapist";
         fetch(url, putMethod)
             .then(async (response) => {
                 if (response.status == 200)
@@ -307,7 +307,7 @@ export default function SessionForm(props) {
             body: JSON.stringify(selectedsession)
         };
         console.log(postMethod);
-        const url = "http://localhost:8000/signup/addsession";
+        const url = window.location.href + "signup/addsession";
         // make the HTTP put request using fetch api
         await fetch(url, postMethod)
             .then(async (response) => {
